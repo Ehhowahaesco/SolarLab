@@ -28,42 +28,39 @@ public class MyStepdefs extends BaseClass {
     }
 
 
-    @Given("I go to main page")
+    @Given("Открываю главную страницу")
     public void iGoToHttpsWwwRtsTenderRu() {
         navigateToHome();
     }
 
-    @When("I select Поставщикам in 223-ФЗ")
-    public void iSelectInФЗ() {
+    @When("Перехожу в раздел Поставщикам в 223-ФЗ")
+    public void iSelectInFZ() {
         MainPage.goProvidersPage();
     }
 
-    @And("I select Расширенный поиск")
+    @And("Я выбираю Расширенный поиск")
     public void iSelectРасширенныйПоиск() {
         ProviderPage.goAdvancedSearchPage();
     }
 
-    @Then("Настроить выбираем 615 - ПП ФР")
+    @Then("Перехоржу в раздел Настроить выбираю \"615 - ПП ФР\" и \"Исключить совестные закупки\"")
     public void настроитьВыбираемППФР() {
         AdvancedSearchPage.goToSettings();
         AdvancedSearchPage.chooseCheckBoxes();
     }
 
-    @And("Исключить совместные закупки")
-    public void исключитьСовместныеЗакупки() {
-    }
 
-    @And("Фильтры по датам. Подача заявок с, по \\(сегодня)")
+    @And("Фильтры по датам. Подача заявок с \"сегодня\" по 28")
     public void фильтрыПоДатамПодачаЗаявокСПоСегодня() {
         AdvancedSearchPage.setFiltersByDate();
     }
 
-    @And("Регион поставки - Алтайский край")
+    @And("Регион поставки - Алтайский край.")
     public void регионПоставкиАлтайскийКрай() {
         AdvancedSearchPage.setDeliveryRegion();
     }
 
-    @And("Проходишь по всем закупкам и собираешь начальная цена и кол-во закупок")
+    @And("Прохожу по всем закупкам и собираешь начальная цена и кол-во закупок")
     public void проходишьПоВсемЗакупкамИСобираешьНачальнаяЦенаИКолВоЗакупок() {
 
         waitWebElement(purchasePage1);
@@ -82,7 +79,7 @@ public class MyStepdefs extends BaseClass {
 
     }
 
-    @And("Данные аккумулируем в файле, общие суммы выводим в лог")
+    @And("Данные аккумулирую в файле, общие суммы вывожу в лог")
     public void данныеАккумулируемВФайлеОбщиеСуммыВыводимВЛог() {
         ResultSearchPage.writeFile(startPrices);
     }
