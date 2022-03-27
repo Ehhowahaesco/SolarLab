@@ -38,7 +38,7 @@ public class ResultSearchPage extends BaseClass {
             pw.println("Колличество закупок : " + list.size());
 
             for (int i = 0; i < list.size(); i++) {
-                pw.println(list.get(i));
+                pw.println(i + 1 +") " +list.get(i));
             }
             pw.close();
 
@@ -46,5 +46,13 @@ public class ResultSearchPage extends BaseClass {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void sumPrices(List<String> list){
+        int sum = 0;
+        for(int i = 0; i < list.size(); i++){
+           sum += Integer.parseInt(list.get(i));
+        }
+        System.out.println(sum);
     }
 }

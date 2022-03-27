@@ -72,16 +72,15 @@ public class MyStepdefs extends BaseClass {
         waitWebElement(purchasePage3);
         ResultSearchPage.addStartPrices(startPrices);
 
-        for (int i = 0; i < startPrices.size(); i++) {
-            System.out.println(startPrices.get(i));
-        }
-        System.out.println(startPrices.size());
 
     }
 
     @And("Данные аккумулирую в файле, общие суммы вывожу в лог")
     public void данныеАккумулируемВФайлеОбщиеСуммыВыводимВЛог() {
         ResultSearchPage.writeFile(startPrices);
+        //ResultSearchPage.sumPrices(startPrices);
+
+
     }
 
     @After
