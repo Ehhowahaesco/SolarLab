@@ -17,11 +17,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
-    public static WebDriver driver;
 
-    public static String purchasePage1 = "//a[contains(text(),'Закупка №0139200000122002527 в ЕИС')]";
-    public static String purchasePage2 = "//a[contains(text(),'Закупка №0317100017522000001 в ЕИС')]";
-    public static String purchasePage3 = "//a[contains(text(),'Закупка №0217100000122000068 в ЕИС')]";
+    public static WebDriver driver;
     public static List<String> startPrices = new ArrayList<>();
     public static final Logger logger = LogManager.getLogger();
     private static String URL = "https://www.rts-tender.ru/";
@@ -39,6 +36,7 @@ public class BaseClass {
     public void navigateToHome() {
         driver.get(URL);
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
         driver.manage().window().maximize();
 
     }
@@ -47,8 +45,9 @@ public class BaseClass {
         driver.quit();
     }
 
-    public static void waitWebElement(String element) {
+    public static void waitWebElement() {
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+        wait.until(ExpectedConditions.titleIs("РТС-тендер"));
     }
 }

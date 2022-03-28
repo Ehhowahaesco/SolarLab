@@ -8,11 +8,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 
 public class MyStepdefs extends BaseClass {
@@ -60,17 +62,24 @@ public class MyStepdefs extends BaseClass {
         AdvancedSearchPage.setDeliveryRegion();
     }
 
-    @And("Прохожу по всем закупкам и собираешь начальная цена и кол-во закупок")
+    @And("Прохожу по всем закупкам и собираю 'начальная цена' и 'кол-во закупок'")
     public void проходишьПоВсемЗакупкамИСобираешьНачальнаяЦенаИКолВоЗакупок() {
 
-        waitWebElement(purchasePage1);
-        ResultSearchPage.addStartPrices(startPrices);
-        driver.findElement(By.xpath("//a[contains(text(),'>')]")).click();
-        waitWebElement(purchasePage2);
-        ResultSearchPage.addStartPrices(startPrices);
-        driver.findElement(By.xpath("//a[contains(text(),'>')]")).click();
-        waitWebElement(purchasePage3);
-        ResultSearchPage.addStartPrices(startPrices);
+        try {
+            Thread.sleep(1000);
+
+           ResultSearchPage.addStartPrices(startPrices);
+
+
+
+
+        } catch (NoSuchElementException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
+
 
 
     }
@@ -78,7 +87,6 @@ public class MyStepdefs extends BaseClass {
     @And("Данные аккумулирую в файле, общие суммы вывожу в лог")
     public void данныеАккумулируемВФайлеОбщиеСуммыВыводимВЛог() {
         ResultSearchPage.writeFile(startPrices);
-        //ResultSearchPage.sumPrices(startPrices);
 
 
     }

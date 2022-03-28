@@ -13,7 +13,7 @@ public class AdvancedSearchPage extends BaseClass {
     }
 
     public static void chooseCheckBoxes() {
-        driver.findElement(By.xpath("//label[contains(text(),'615-ПП РФ')]"));
+        driver.findElement(By.xpath("//label[contains(text(),'615-ПП РФ')]")).click();
         driver.findElement(By.xpath("//label[contains(text(),'Исключить совместные закупки')]")).click();
     }
 
@@ -21,12 +21,13 @@ public class AdvancedSearchPage extends BaseClass {
         driver.findElement(By.xpath("//div[contains(text(),'Фильтры по датам')]")).click();
         WebElement dateInput1 = driver.findElement(By.xpath("(//input[@type='text'])[4]"));
         dateInput1.click();
-        dateInput1.sendKeys(formatter.format(date));
+        dateInput1.sendKeys("26-03-2022");
         dateInput1.sendKeys(Keys.ENTER);
 
         WebElement dateInput2 = driver.findElement(By.xpath("(//input[@type='text'])[5]"));
         dateInput2.click();
-        dateInput2.sendKeys("28-03-2022");
+        dateInput2.sendKeys(formatter.format(date));
+       // dateInput2.sendKeys("30-03-2022");
         dateInput2.sendKeys(Keys.ENTER);
     }
 
