@@ -24,7 +24,7 @@ public class BaseClass {
     private static String URL = "https://www.rts-tender.ru/";
 
     static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    static Date date = new Date(System.currentTimeMillis());
+    static Date dateNow = new Date(System.currentTimeMillis());
 
 
     public void setDriver() {

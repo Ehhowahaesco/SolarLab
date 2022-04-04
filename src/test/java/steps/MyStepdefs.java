@@ -19,10 +19,6 @@ import java.util.NoSuchElementException;
 
 public class MyStepdefs extends BaseClass {
 
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-    Date date = new Date(System.currentTimeMillis());
-
-
     @Before
     public void start() {
         setDriver();
@@ -68,24 +64,18 @@ public class MyStepdefs extends BaseClass {
         try {
             Thread.sleep(1000);
 
-           ResultSearchPage.addStartPrices(startPrices);
-
-
-
-
+            ResultSearchPage.addStartPrices(startPrices);
+            Thread.sleep(100000);
         } catch (NoSuchElementException | InterruptedException e) {
             e.printStackTrace();
         }
-
-
-
-
 
 
     }
 
     @And("Данные аккумулирую в файле, общие суммы вывожу в лог")
     public void данныеАккумулируемВФайлеОбщиеСуммыВыводимВЛог() {
+
         ResultSearchPage.writeFile(startPrices);
 
 
