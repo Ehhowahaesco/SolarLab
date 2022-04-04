@@ -19,6 +19,7 @@ public class ResultSearchPage extends BaseClass {
 
         do {
             Thread.sleep(1000);
+
             visibleElement = driver.findElements(By.xpath("//a[contains(text(),'>')]")).size() > 0;
 
             prices = driver.findElements(By.xpath("//div[@class='card-item__properties-desc']"));
