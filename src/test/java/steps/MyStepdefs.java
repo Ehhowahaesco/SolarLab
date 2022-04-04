@@ -65,7 +65,7 @@ public class MyStepdefs extends BaseClass {
             Thread.sleep(1000);
 
             ResultSearchPage.addStartPrices(startPrices);
-            Thread.sleep(100000);
+
         } catch (NoSuchElementException | InterruptedException e) {
             e.printStackTrace();
         }
