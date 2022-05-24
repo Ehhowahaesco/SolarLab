@@ -62,7 +62,7 @@ public class MyStepdefs extends BaseClass {
     public void проходишьПоВсемЗакупкамИСобираешьНачальнаяЦенаИКолВоЗакупок() {
 
         try {
-            Thread.sleep(1000);
+            //1000
 
             ResultSearchPage.addStartPrices(startPrices);
 

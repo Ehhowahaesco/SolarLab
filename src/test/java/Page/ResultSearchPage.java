@@ -59,11 +59,5 @@ public class ResultSearchPage extends BaseClass {
     }
 
 
-    public static void sumPrices(List<String> list) {
-        int sum = 0;
-        for (int i = 0; i < list.size(); i++) {
-            sum += Integer.parseInt(list.get(i));
-        }
-        System.out.println(sum);
-    }
+   
 }
