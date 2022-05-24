@@ -18,7 +18,7 @@ public class ResultSearchPage extends BaseClass {
 
 
         do {
-            Thread.sleep(1000);
+            //1000
 
             visibleElement = driver.findElements(By.xpath("//a[contains(text(),'>')]")).size() > 0;
 
@@ -34,8 +34,7 @@ public class ResultSearchPage extends BaseClass {
                 driver.findElement(By.xpath("//a[contains(text(),'>')]")).click();
             }
 
-        }
-        while (visibleElement);
+        } while (visibleElement);
 
     }
 
@@ -43,7 +42,6 @@ public class ResultSearchPage extends BaseClass {
     public static void writeFile(List<String> list) {
         File file = new File("testFile");
         try {
-
 
             PrintWriter pw = new PrintWriter(file);
 

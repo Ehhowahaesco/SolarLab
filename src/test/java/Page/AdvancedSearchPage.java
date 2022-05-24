@@ -2,7 +2,6 @@ package Page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AdvancedSearchPage extends BaseClass {
@@ -27,7 +26,6 @@ public class AdvancedSearchPage extends BaseClass {
         WebElement dateInput2 = driver.findElement(By.xpath("(//input[@type='text'])[5]"));
         dateInput2.click();
         dateInput2.sendKeys(formatter.format(dateNow));
-       // dateInput2.sendKeys("30-03-2022");
         dateInput2.sendKeys(Keys.ENTER);
     }
 
