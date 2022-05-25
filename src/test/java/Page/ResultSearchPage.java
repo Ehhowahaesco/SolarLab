@@ -21,7 +21,7 @@ public class ResultSearchPage extends BaseClass {
 
         do {
             //1000
-            Thread.sleep(1000);
+
 
             visibleElement = driver.findElements(nextButton).size() > 0;
 

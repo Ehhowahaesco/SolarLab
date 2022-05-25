@@ -71,7 +71,7 @@ public class MyStepdefs extends BaseClass {
 
         try {
             //1000
-            Thread.sleep(1000);
+
 
             resultSearchPage.addStartPrices(startPrices);
 
