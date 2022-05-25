@@ -7,9 +7,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProviderPage extends BaseClass {
+        By advancedSearchButton = By.xpath("//h2[contains(text(),'Расширенный поиск')]");
 
-
-    public static void goAdvancedSearchPage() {
-        driver.findElement(By.xpath("//h2[contains(text(),'Расширенный поиск')]")).click();
+    public  void goAdvancedSearchPage() {
+        driver.findElement(advancedSearchButton).click();
     }
 }

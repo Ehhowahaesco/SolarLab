@@ -5,37 +5,50 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class AdvancedSearchPage extends BaseClass {
+    By settingsButton = By.xpath("//span[@class='filter__open-modal']");
+    By ppRFCheckBox = By.xpath("//label[contains(text(),'615-ПП РФ')]");
+    By excludeJointPurchasesCheckBox = By.xpath("//label[contains(text(),'Исключить совместные закупки')]");
+    By dateFilters = By.xpath("//div[contains(text(),'Фильтры по датам')]");
+    By dateInputFirst = By.xpath("(//input[@type='text'])[4]");
+    By dateInputLast = By.xpath("(//input[@type='text'])[5]");
+    By deliveryRegionOption = By.xpath("//div[contains(text(),'Регион поставки')]");
+    By deliveryRegionPlaceHolder = By.xpath("(//input[@placeholder='Регион поставки'])[1]");
+    By searchSuggest = By.xpath("//a[@class='cstm-search__suggest']");
+    By searchButton = By.xpath("//button[@class='search__btn bottomFilterSearch']");
 
 
-    public static void goToSettings() {
-        driver.findElement(By.xpath("//span[@class='filter__open-modal']")).click();
+    public  void goToSettings() {
+        driver.findElement(settingsButton).click();
     }
 
-    public static void chooseCheckBoxes() {
-        driver.findElement(By.xpath("//label[contains(text(),'615-ПП РФ')]")).click();
-        driver.findElement(By.xpath("//label[contains(text(),'Исключить совместные закупки')]")).click();
+    public  void chooseCheckBoxes() {
+        driver.findElement(ppRFCheckBox).click();
+        driver.findElement(excludeJointPurchasesCheckBox).click();
     }
 
-    public static void setFiltersByDate() {
-        driver.findElement(By.xpath("//div[contains(text(),'Фильтры по датам')]")).click();
-        WebElement dateInput1 = driver.findElement(By.xpath("(//input[@type='text'])[4]"));
-        dateInput1.click();
-        dateInput1.sendKeys(formatter.format(dateNow));
-        dateInput1.sendKeys(Keys.ENTER);
+    public  void setFiltersByDate() {
+        driver.findElement(dateFilters).click();
+        WebElement firstDate = driver.findElement(dateInputFirst);
+        firstDate.click();
+        firstDate.sendKeys(formatter.format(dateNow));
+        firstDate.sendKeys(Keys.ENTER);
 
-        WebElement dateInput2 = driver.findElement(By.xpath("(//input[@type='text'])[5]"));
-        dateInput2.click();
-        dateInput2.sendKeys(formatter.format(dateNow));
-        dateInput2.sendKeys(Keys.ENTER);
+        WebElement lastDate = driver.findElement(dateInputLast);
+        lastDate.click();
+        lastDate.sendKeys(formatter.format(dateNow));
+        lastDate.sendKeys(Keys.ENTER);
+
+
+
     }
 
-    public static void setDeliveryRegion() {
-        driver.findElement(By.xpath("//div[contains(text(),'Регион поставки')]")).click();
-        WebElement inputDeliveryRegion = driver.findElement(By.xpath("(//input[@placeholder='Регион поставки'])[1]"));
+    public  void setDeliveryRegion() {
+        driver.findElement(deliveryRegionOption).click();
+        WebElement inputDeliveryRegion = driver.findElement(deliveryRegionPlaceHolder);
 
         inputDeliveryRegion.sendKeys("Алтайский край");
-        driver.findElement(By.xpath("//a[@class='cstm-search__suggest']")).click();
-        driver.findElement(By.xpath("//button[@class='search__btn bottomFilterSearch']")).click();
+        driver.findElement(searchSuggest).click();
+        driver.findElement(searchButton).click();
     }
 
 }

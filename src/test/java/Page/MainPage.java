@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends BaseClass {
 
+    By providersButton = By.xpath("(//a[@class='link'][contains(text(),'Поставщикам')])[2]");
 
-    private static WebElement provider = driver.findElement(By.xpath("(//a[@class='link'][contains(text(),'Поставщикам')])[2]"));
+    public void goProvidersPage() {
 
-    public static void goProvidersPage() {
-        provider.click();
+        driver.findElement(providersButton).click();
     }
 }

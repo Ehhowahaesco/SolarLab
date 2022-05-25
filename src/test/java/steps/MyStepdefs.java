@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.it.Ma;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -18,6 +19,10 @@ import java.util.NoSuchElementException;
 
 
 public class MyStepdefs extends BaseClass {
+    MainPage mainPage = new MainPage();
+    ProviderPage providerPage = new ProviderPage();
+    AdvancedSearchPage advancedSearchPage = new AdvancedSearchPage();
+    ResultSearchPage resultSearchPage = new ResultSearchPage();
 
     @Before
     public void start() {
@@ -28,34 +33,37 @@ public class MyStepdefs extends BaseClass {
 
     @Given("Открываю главную страницу")
     public void iGoToHttpsWwwRtsTenderRu() {
+
         navigateToHome();
     }
 
     @When("Перехожу в раздел Поставщикам в 223-ФЗ")
     public void iSelectInFZ() {
-        MainPage.goProvidersPage();
+
+        mainPage.goProvidersPage();
     }
 
     @And("Я выбираю Расширенный поиск")
     public void iSelectРасширенныйПоиск() {
-        ProviderPage.goAdvancedSearchPage();
+        providerPage.goAdvancedSearchPage();
     }
 
     @Then("Перехоржу в раздел Настроить выбираю \"615 - ПП ФР\" и \"Исключить совестные закупки\"")
     public void настроитьВыбираемППФР() {
-        AdvancedSearchPage.goToSettings();
-        AdvancedSearchPage.chooseCheckBoxes();
+        advancedSearchPage.goToSettings();
+        advancedSearchPage.chooseCheckBoxes();
     }
 
 
     @And("Фильтры по датам. Подача заявок с \"сегодня\" по 28")
     public void фильтрыПоДатамПодачаЗаявокСПоСегодня() {
-        AdvancedSearchPage.setFiltersByDate();
+
+        advancedSearchPage.setFiltersByDate();
     }
 
     @And("Регион поставки - Алтайский край.")
     public void регионПоставкиАлтайскийКрай() {
-        AdvancedSearchPage.setDeliveryRegion();
+        advancedSearchPage.setDeliveryRegion();
     }
 
     @And("Прохожу по всем закупкам и собираю 'начальная цена' и 'кол-во закупок'")
@@ -63,8 +71,9 @@ public class MyStepdefs extends BaseClass {
 
         try {
             //1000
+            Thread.sleep(1000);
 
-            ResultSearchPage.addStartPrices(startPrices);
+            resultSearchPage.addStartPrices(startPrices);
 
         } catch (NoSuchElementException | InterruptedException e) {
             e.printStackTrace();
@@ -76,7 +85,7 @@ public class MyStepdefs extends BaseClass {
     @And("Данные аккумулирую в файле, общие суммы вывожу в лог")
     public void данныеАккумулируемВФайлеОбщиеСуммыВыводимВЛог() {
 
-        ResultSearchPage.writeFile(startPrices);
+        resultSearchPage.writeFile(startPrices);
 
 
     }

@@ -10,19 +10,22 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class ResultSearchPage extends BaseClass {
+    By nextButton = By.xpath("//a[contains(text(),'>')]");
+    By priceLocator = By.xpath("//div[@class='card-item__properties-desc']");
 
 
-    public static void addStartPrices(List<String> startPrices) throws NoSuchElementException, InterruptedException {
+    public  void addStartPrices(List<String> startPrices) throws NoSuchElementException, InterruptedException {
         List<WebElement> prices;
         boolean visibleElement;
 
 
         do {
             //1000
+            Thread.sleep(1000);
 
-            visibleElement = driver.findElements(By.xpath("//a[contains(text(),'>')]")).size() > 0;
+            visibleElement = driver.findElements(nextButton).size() > 0;
 
-            prices = driver.findElements(By.xpath("//div[@class='card-item__properties-desc']"));
+            prices = driver.findElements(priceLocator);
 
             for (int i = 0; i < prices.size(); i += 4) {
 
@@ -31,7 +34,7 @@ public class ResultSearchPage extends BaseClass {
             }
 
             if (visibleElement) {
-                driver.findElement(By.xpath("//a[contains(text(),'>')]")).click();
+                driver.findElement(nextButton).click();
             }
 
         } while (visibleElement);
@@ -59,5 +62,4 @@ public class ResultSearchPage extends BaseClass {
     }
 
 
-   
 }
